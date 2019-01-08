@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Interactive
+  - Collectible
+  - redCube
+  - Inventory
+  - blueCube
+  - NoClip
+  - Canvas
+  - Target
+  - 20SiHot
+  - 40SiHot
+  - 60SiHot
+  - 80SiHot
+  - 20SiCold
+  - 40SiCold
+  - 60SiCold
+  - 80SiCold
+  - InvSlot
+  - Machine
+  - Geschmolzen
+  - ZahnradKaputt
+  - GeschmolzenEmpty
+  - Richtig
+  - Falsch
+  - Empty
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Back
+    uniqueID: 436640321
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Second Foreground
+    uniqueID: 1095041343
+    locked: 0
+  - name: Foreground
+    uniqueID: 4127593039
+    locked: 0

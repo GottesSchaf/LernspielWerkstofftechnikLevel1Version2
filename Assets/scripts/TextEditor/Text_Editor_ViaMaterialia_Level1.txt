@@ -1,0 +1,60 @@
+Datenblatt_Text~
+Zahnrad: 							CuAl40-C
+
+Pleuel: 								AlMgSi4
+
+Schraubenschlüssel: 		C45
+
+Kolben: 								CuAl9
+|
+Sprechblase_Text~
+Ach herrje, die Beschriftungen befinden sich nicht an den Tiegeln. Und nun?
+Ich sollte herausfinden, welche Legierung 
+zu welchem Tiegel gehört. Vielleicht finde ich mehr Informationen in der Bibliothek.
+|
+Legie_1~
+20% Al
+80% Cu
+|
+Legie_2~
+40% Al
+60% Cu
+|
+Legie_3~
+60% Al
+40% Cu
+|
+Legie_4~
+80% Al
+20% Cu
+|
+°C~
+°C
+|
+1_Punkt_Y_Achse~
+0°C
+|
+2_Punkt_Y_Achse~
+500 -
+|
+3_Punkt_Y_Achse~
+1000 -
+|
+4_Punkt_Y_Achse~
+1500 -
+|
+5_Punkt_Y_Achse~
+2000 -
+|
+1_Punkt_X_Achse~
+l
+50
+|
+2_Punkt_X_Achse~
+l
+100
+|
+3_Punkt_X_Achse~
+l
+150
+|
