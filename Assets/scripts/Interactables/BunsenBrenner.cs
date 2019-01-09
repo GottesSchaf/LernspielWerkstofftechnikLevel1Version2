@@ -53,6 +53,10 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] GameObject erstVerarztenFenster; //Infofenster falls man mit Verbrennung weiter arbeiten möchte
     [SerializeField] Transform infoBBAusgeschaltet; //Falls man den Raum verlassen möchte, solange das Gas noch eingeschalten ist
     public static bool tiegelLocked20, tiegelLocked40, tiegelLocked60, tiegelLocked80; //Zum verhindern, dass man die Tiegel ziehen kann während sie erhitzt werden
+    bool[] tiegel1Graph = new bool[6] { false, false, false, false, false, false };
+    bool[] tiegel2Graph = new bool[6] { false, false, false, false, false, false };
+    bool[] tiegel3Graph = new bool[6] { false, false, false, false, false, false };
+    bool[] tiegel4Graph = new bool[6] { false, false, false, false, false, false };
 
     // Use this for initialization
     void Start()
@@ -266,6 +270,7 @@ public class BunsenBrenner : MonoBehaviour
             #region 20% / 80%
             if (slot1.transform.childCount > 0 || slot2.transform.childCount > 0 || slot3.transform.childCount > 0 || slot4.transform.childCount > 0)
             {
+                #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("20SiCold") || slot1.transform.GetChild(0).CompareTag("20SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("20SiCold") || slot2.transform.GetChild(0).CompareTag("20SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("20SiCold") || slot3.transform.GetChild(0).CompareTag("20SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("20SiCold") || slot4.transform.GetChild(0).CompareTag("20SiHot")))
                 {
                     tiegelLocked20 = true;
@@ -418,6 +423,7 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[0] = BB1_Zieltemp[4];
                     }
                 }
+                #endregion
                 //Sonst kühl das ganze mit gleichen Raten ab
                 else
                 {
@@ -471,7 +477,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[0] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraph.ShowGraph(25, BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2] + BB1_Zeit[3] + BB1_Zeit[4], tiegelFarbe);
+                            tiegel1Graph[0] = true;
+                        }
+                        else if (tiegel1Graph[0] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraph.ShowGraph(25, BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2] + BB1_Zeit[3], tiegelFarbe);
+                            tiegel1Graph[0] = true;
+                        }
+                        else if (tiegel1Graph[0] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraph.ShowGraph(25, BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2], tiegelFarbe);
+                            tiegel1Graph[0] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= BB1_Zieltemp[0] / BB1_Zeit[0];
                     }
                     else if (istTemp[0] > BB1_Zieltemp[0] && istTemp[0] <= BB1_Zieltemp[1])
@@ -492,7 +514,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[1] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2] + BB1_Zeit[3], tiegelFarbe);
+                            tiegel1Graph[1] = true;
+                        }
+                        else if (tiegel1Graph[1] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2], tiegelFarbe);
+                            tiegel1Graph[1] = true;
+                        }
+                        else if (tiegel1Graph[1] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1], tiegelFarbe);
+                            tiegel1Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[1] - BB1_Zieltemp[0]) / BB1_Zeit[1];
                     }
                     //3ter Graph Punkt
@@ -514,10 +552,22 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraph.ShowGraph(istTemp[0], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2], tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[2] == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[2], 0, tiegelFarbe);
+                            windowGraph.ShowGraph(BB1_Zieltemp[1], BB1_Zeit[0], tiegelFarbe);
+                            tiegel1Graph[2] = true;
+                        }
+                        if(tiegel1Graph[1] == false && BB1_Zieltemp[1] == BB1_Zieltemp[0])
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1], tiegelFarbe);
+                            tiegel1Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[2] - BB1_Zieltemp[1]) / BB1_Zeit[2];
                     }
-                    else if (istTemp[0] > BB1_Zieltemp[1] && istTemp[0] <= BB1_Zieltemp[2] && graphPunkt4 == true && graphPunkt5 == false)
+                    else if (istTemp[0] > BB1_Zieltemp[1] && istTemp[0] <= BB1_Zieltemp[2] && graphPunkt4 == true)
                     {
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("20SiHot") || slot1.transform.GetChild(0).CompareTag("20SiCold")))
                         {
@@ -535,7 +585,18 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[2] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[1], BB1_Zeit[0] + BB1_Zeit[1], tiegelFarbe);
+                            tiegel1Graph[2] = true;
+                        }
+                        else if(tiegel1Graph[2] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[1], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2], tiegelFarbe);
+                            tiegel1Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[2] - BB1_Zieltemp[1]) / BB1_Zeit[2];
                     }
                     //4ter Graph Punkt
@@ -557,7 +618,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[3] == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[3], 0, tiegelFarbe);
+                            windowGraph.ShowGraph(BB1_Zieltemp[2], BB1_Zeit[0], tiegelFarbe);
+                            tiegel1Graph[3] = true;
+                        }
+                        if(tiegel1Graph[2] == false && BB1_Zieltemp[2] == BB1_Zieltemp[1])
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2], tiegelFarbe);
+                            tiegel1Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[3] - BB1_Zieltemp[2]) / BB1_Zeit[3];
                     }
                     else if (istTemp[0] > BB1_Zieltemp[2] && istTemp[0] <= BB1_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
@@ -578,7 +651,13 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[3] == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[2], BB1_Zeit[0] + BB1_Zeit[1], tiegelFarbe);
+                            tiegel1Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[3] - BB1_Zieltemp[2]) / BB1_Zeit[3];
                     }
                     //5ter Graph Punkt
@@ -600,7 +679,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel1Graph[4] == false)
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[4], 0, tiegelFarbe);
+                            windowGraph.ShowGraph(BB1_Zieltemp[3], BB1_Zeit[0], tiegelFarbe);
+                            tiegel1Graph[4] = true;
+                        }
+                        if (tiegel1Graph[3] == false && BB1_Zieltemp[3] == BB1_Zieltemp[2])
+                        {
+                            windowGraph.ShowGraph(BB1_Zieltemp[0], BB1_Zeit[0] + BB1_Zeit[1] + BB1_Zeit[2] + BB1_Zeit[3], tiegelFarbe);
+                            tiegel1Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[0] -= (BB1_Zieltemp[4] - BB1_Zieltemp[3]) / BB1_Zeit[4];
                     }
                     else if (istTemp[0] < 25)
@@ -611,6 +702,7 @@ public class BunsenBrenner : MonoBehaviour
                 #endregion
                 //40% Si / 60% Ge
                 #region 40% / 60%
+                #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("40SiCold") || slot1.transform.GetChild(0).CompareTag("40SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("40SiCold") || slot2.transform.GetChild(0).CompareTag("40SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("40SiCold") || slot3.transform.GetChild(0).CompareTag("40SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("40SiCold") || slot4.transform.GetChild(0).CompareTag("40SiHot")))
                 {
                     tiegelLocked40 = true;
@@ -758,6 +850,7 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[1] = BB2_Zieltemp[4];
                     }
                 }
+                #endregion
                 else
                 {
                     tiegelLocked40 = false;
@@ -810,7 +903,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[0] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel2.ShowGraph(25, BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2] + BB2_Zeit[3] + BB2_Zeit[4], tiegelFarbe);
+                            tiegel2Graph[0] = true;
+                        }
+                        else if (tiegel2Graph[0] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(25, BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2] + BB2_Zeit[3], tiegelFarbe);
+                            tiegel2Graph[0] = true;
+                        }
+                        else if (tiegel2Graph[0] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(25, BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2], tiegelFarbe);
+                            tiegel2Graph[0] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= BB2_Zieltemp[0] / BB2_Zeit[0];
                     }
                     else if (istTemp[1] > BB2_Zieltemp[0] && istTemp[1] <= BB2_Zieltemp[1])
@@ -831,7 +940,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[1] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2] + BB2_Zeit[3], tiegelFarbe);
+                            tiegel2Graph[1] = true;
+                        }
+                        else if (tiegel2Graph[1] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2], tiegelFarbe);
+                            tiegel2Graph[1] = true;
+                        }
+                        else if (tiegel2Graph[1] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1], tiegelFarbe);
+                            tiegel2Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[1] - BB2_Zieltemp[0]) / BB2_Zeit[1];
                     }
                     //3ter Graph Punkt
@@ -853,7 +978,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[2] == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[2], 0, tiegelFarbe);
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[1], BB2_Zeit[0], tiegelFarbe);
+                            tiegel2Graph[2] = true;
+                        }
+                        if (tiegel2Graph[1] == false && BB2_Zieltemp[1] == BB2_Zieltemp[0])
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1], tiegelFarbe);
+                            tiegel2Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[2] - BB2_Zieltemp[1]) / BB2_Zeit[2];
                     }
                     else if (istTemp[1] > BB2_Zieltemp[1] && istTemp[1] <= BB2_Zieltemp[2] && graphPunkt4 == true && graphPunkt5 == false)
@@ -874,7 +1011,18 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[2] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[1], BB2_Zeit[0] + BB2_Zeit[1], tiegelFarbe);
+                            tiegel2Graph[2] = true;
+                        }
+                        else if (tiegel2Graph[2] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[1], BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2], tiegelFarbe);
+                            tiegel2Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[2] - BB2_Zieltemp[1]) / BB2_Zeit[2];
                     }
                     //4ter Graph Punkt
@@ -896,7 +1044,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[3] == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[3], 0, tiegelFarbe);
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[2], BB2_Zeit[0], tiegelFarbe);
+                            tiegel2Graph[3] = true;
+                        }
+                        if (tiegel2Graph[2] == false && BB2_Zieltemp[2] == BB2_Zieltemp[1])
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2], tiegelFarbe);
+                            tiegel2Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[3] - BB2_Zieltemp[2]) / BB2_Zeit[3];
                     }
                     else if (istTemp[1] > BB2_Zieltemp[2] && istTemp[1] <= BB2_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
@@ -917,7 +1077,13 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[3] == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[2], BB2_Zeit[0] + BB2_Zeit[1], tiegelFarbe);
+                            tiegel2Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[3] - BB2_Zieltemp[2]) / BB2_Zeit[3];
                     }
                     //5ter Graph Punkt
@@ -939,7 +1105,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel2Graph[4] == false)
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[4], 0, tiegelFarbe);
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[3], BB2_Zeit[0], tiegelFarbe);
+                            tiegel2Graph[4] = true;
+                        }
+                        if (tiegel2Graph[3] == false && BB2_Zieltemp[3] == BB2_Zieltemp[2])
+                        {
+                            windowGraphTiegel2.ShowGraph(BB2_Zieltemp[0], BB2_Zeit[0] + BB2_Zeit[1] + BB2_Zeit[2] + BB2_Zeit[3], tiegelFarbe);
+                            tiegel2Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[1] -= (BB2_Zieltemp[4] - BB2_Zieltemp[3]) / BB2_Zeit[4];
                     }
                     else if (istTemp[1] < 25)
@@ -950,6 +1128,7 @@ public class BunsenBrenner : MonoBehaviour
                 #endregion
                 //60% Si / 40% Ge
                 #region 60% / 40%
+                #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("60SiCold") || slot1.transform.GetChild(0).CompareTag("60SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("60SiCold") || slot2.transform.GetChild(0).CompareTag("60SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("60SiCold") || slot3.transform.GetChild(0).CompareTag("60SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("60SiCold") || slot4.transform.GetChild(0).CompareTag("60SiHot")))
                 {
                     tiegelLocked60 = true;
@@ -1097,6 +1276,7 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[2] = BB3_Zieltemp[4];
                     }
                 }
+                #endregion
                 else
                 {
                     tiegelLocked60 = false;
@@ -1149,7 +1329,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[0] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel3.ShowGraph(25, BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2] + BB3_Zeit[3] + BB3_Zeit[4], tiegelFarbe);
+                            tiegel3Graph[0] = true;
+                        }
+                        else if (tiegel3Graph[0] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(25, BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2] + BB3_Zeit[3], tiegelFarbe);
+                            tiegel3Graph[0] = true;
+                        }
+                        else if (tiegel3Graph[0] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(25, BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2], tiegelFarbe);
+                            tiegel3Graph[0] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= BB3_Zieltemp[0] / BB3_Zeit[0];
                     }
                     else if (istTemp[2] > BB3_Zieltemp[0] && istTemp[2] <= BB3_Zieltemp[1])
@@ -1170,7 +1366,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[1] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2] + BB3_Zeit[3], tiegelFarbe);
+                            tiegel3Graph[1] = true;
+                        }
+                        else if (tiegel3Graph[1] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2], tiegelFarbe);
+                            tiegel3Graph[1] = true;
+                        }
+                        else if (tiegel3Graph[1] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1], tiegelFarbe);
+                            tiegel3Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[1] - BB3_Zieltemp[0]) / BB3_Zeit[1];
                     }
                     //3ter Graph Punkt
@@ -1192,7 +1404,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[2] == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[2], 0, tiegelFarbe);
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[1], BB3_Zeit[0], tiegelFarbe);
+                            tiegel3Graph[2] = true;
+                        }
+                        if (tiegel3Graph[1] == false && BB3_Zieltemp[1] == BB3_Zieltemp[0])
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1], tiegelFarbe);
+                            tiegel3Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[2] - BB3_Zieltemp[1]) / BB3_Zeit[2];
                     }
                     else if (istTemp[2] > BB3_Zieltemp[1] && istTemp[2] <= BB3_Zieltemp[2] && graphPunkt4 == true && graphPunkt5 == false)
@@ -1213,7 +1437,18 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[2] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[1], BB3_Zeit[0] + BB3_Zeit[1], tiegelFarbe);
+                            tiegel3Graph[2] = true;
+                        }
+                        else if (tiegel3Graph[2] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[1], BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2], tiegelFarbe);
+                            tiegel3Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[2] - BB3_Zieltemp[1]) / BB3_Zeit[2];
                     }
                     //4ter Graph Punkt
@@ -1235,7 +1470,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[3] == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[3], 0, tiegelFarbe);
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[2], BB3_Zeit[0], tiegelFarbe);
+                            tiegel3Graph[3] = true;
+                        }
+                        if (tiegel3Graph[2] == false && BB3_Zieltemp[2] == BB3_Zieltemp[1])
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2], tiegelFarbe);
+                            tiegel3Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[2] - BB3_Zieltemp[1]) / BB3_Zeit[2];
                     }
                     else if (istTemp[2] > BB3_Zieltemp[2] && istTemp[2] <= BB3_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
@@ -1256,7 +1503,13 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[3] == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[2], BB3_Zeit[0] + BB3_Zeit[1], tiegelFarbe);
+                            tiegel3Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[3] - BB3_Zieltemp[2]) / BB3_Zeit[3];
                     }
                     //5ter Graph Punkt
@@ -1278,7 +1531,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel3Graph[4] == false)
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[4], 0, tiegelFarbe);
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[3], BB3_Zeit[0], tiegelFarbe);
+                            tiegel3Graph[4] = true;
+                        }
+                        if (tiegel3Graph[3] == false && BB3_Zieltemp[3] == BB3_Zieltemp[2])
+                        {
+                            windowGraphTiegel3.ShowGraph(BB3_Zieltemp[0], BB3_Zeit[0] + BB3_Zeit[1] + BB3_Zeit[2] + BB3_Zeit[3], tiegelFarbe);
+                            tiegel3Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[2] -= (BB3_Zieltemp[4] - BB3_Zieltemp[3]) / BB3_Zeit[4];
                     }
                     else if (istTemp[2] < 25)
@@ -1289,6 +1554,7 @@ public class BunsenBrenner : MonoBehaviour
                 #endregion
                 //80% Si / 20% Ge
                 #region 80% / 20%
+                #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("80SiCold") || slot1.transform.GetChild(0).CompareTag("80SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("80SiCold") || slot2.transform.GetChild(0).CompareTag("80SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("80SiCold") || slot3.transform.GetChild(0).CompareTag("80SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("80SiCold") || slot4.transform.GetChild(0).CompareTag("80SiHot")))
                 {
                     tiegelLocked80 = true;
@@ -1436,6 +1702,7 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[3] = BB4_Zieltemp[4];
                     }
                 }
+                #endregion
                 else
                 {
                     tiegelLocked80 = false;
@@ -1488,7 +1755,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[0] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel4.ShowGraph(25, BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2] + BB4_Zeit[3] + BB4_Zeit[4], tiegelFarbe);
+                            tiegel4Graph[0] = true;
+                        }
+                        else if (tiegel4Graph[0] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(25, BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2] + BB4_Zeit[3], tiegelFarbe);
+                            tiegel4Graph[0] = true;
+                        }
+                        else if (tiegel4Graph[0] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(25, BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2], tiegelFarbe);
+                            tiegel4Graph[0] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= BB4_Zieltemp[0] / BB4_Zeit[0];
                     }
                     else if (istTemp[3] > BB4_Zieltemp[0] && istTemp[3] <= BB4_Zieltemp[1])
@@ -1509,7 +1792,23 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[1] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2] + BB4_Zeit[3], tiegelFarbe);
+                            tiegel4Graph[1] = true;
+                        }
+                        else if (tiegel4Graph[1] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2], tiegelFarbe);
+                            tiegel4Graph[1] = true;
+                        }
+                        else if (tiegel4Graph[1] == false && graphPunkt4 == false && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1], tiegelFarbe);
+                            tiegel4Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= (BB4_Zieltemp[1] - BB4_Zieltemp[0]) / BB4_Zeit[1];
                     }
                     //3ter Graph Punkt
@@ -1531,6 +1830,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[2] == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[2], 0, tiegelFarbe);
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[1], BB4_Zeit[0], tiegelFarbe);
+                            tiegel4Graph[2] = true;
+                        }
+                        if (tiegel4Graph[1] == false && BB4_Zieltemp[1] == BB4_Zieltemp[0])
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1], tiegelFarbe);
+                            tiegel4Graph[1] = true;
+                        }
+                        //------------------------------------------------
                         windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
                         istTemp[3] -= (BB4_Zieltemp[2] - BB4_Zieltemp[1]) / BB4_Zeit[2];
                     }
@@ -1552,7 +1864,18 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[2] == false && graphPunkt4 && graphPunkt5 == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[1], BB4_Zeit[0] + BB4_Zeit[1], tiegelFarbe);
+                            tiegel4Graph[2] = true;
+                        }
+                        else if (tiegel4Graph[2] == false && graphPunkt4 && graphPunkt5)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[1], BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2], tiegelFarbe);
+                            tiegel4Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= (BB4_Zieltemp[2] - BB4_Zieltemp[1]) / BB4_Zeit[2];
                     }
                     //4ter Graph Punkt
@@ -1574,7 +1897,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[3] == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[3], 0, tiegelFarbe);
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[2], BB4_Zeit[0], tiegelFarbe);
+                            tiegel4Graph[3] = true;
+                        }
+                        if (tiegel4Graph[2] == false && BB4_Zieltemp[2] == BB4_Zieltemp[1])
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2], tiegelFarbe);
+                            tiegel4Graph[2] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= (BB4_Zieltemp[3] - BB4_Zieltemp[2]) / BB4_Zeit[3];
                     }
                     else if (istTemp[3] > BB4_Zieltemp[2] && istTemp[3] <= BB4_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
@@ -1595,7 +1930,13 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[3] == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[2], BB4_Zeit[0] + BB4_Zeit[1], tiegelFarbe);
+                            tiegel4Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= (BB4_Zieltemp[3] - BB4_Zieltemp[2]) / BB4_Zeit[3];
                     }
                     //5ter Graph Punkt
@@ -1617,7 +1958,19 @@ public class BunsenBrenner : MonoBehaviour
                         {
                             tiegelFarbe = 80;
                         }
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
+                        //-------------------Showgraph--------------------
+                        if (tiegel4Graph[4] == false)
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[4], 0, tiegelFarbe);
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[3], BB4_Zeit[0], tiegelFarbe);
+                            tiegel4Graph[4] = true;
+                        }
+                        if (tiegel4Graph[3] == false && BB4_Zieltemp[3] == BB4_Zieltemp[2])
+                        {
+                            windowGraphTiegel4.ShowGraph(BB4_Zieltemp[0], BB4_Zeit[0] + BB4_Zeit[1] + BB4_Zeit[2] + BB4_Zeit[3], tiegelFarbe);
+                            tiegel4Graph[3] = true;
+                        }
+                        //------------------------------------------------
                         istTemp[3] -= (BB4_Zieltemp[4] - BB4_Zieltemp[3]) / BB4_Zeit[4];
                     }
                     else if (istTemp[3] < 25)
