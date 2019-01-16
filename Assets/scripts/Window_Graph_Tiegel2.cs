@@ -41,7 +41,6 @@ public class Window_Graph_Tiegel2 : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
-        
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen

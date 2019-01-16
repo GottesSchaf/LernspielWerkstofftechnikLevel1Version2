@@ -1843,7 +1843,6 @@ public class BunsenBrenner : MonoBehaviour
                             tiegel4Graph[1] = true;
                         }
                         //------------------------------------------------
-                        windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
                         istTemp[3] -= (BB4_Zieltemp[2] - BB4_Zieltemp[1]) / BB4_Zeit[2];
                     }
                     else if (istTemp[3] > BB4_Zieltemp[1] && istTemp[3] <= BB4_Zieltemp[2] && graphPunkt4 == true && graphPunkt5 == false)
