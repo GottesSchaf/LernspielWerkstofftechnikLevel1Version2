@@ -3276,9 +3276,10 @@ GameObject:
   - component: {fileID: 124641045}
   - component: {fileID: 124641047}
   - component: {fileID: 124641046}
+  - component: {fileID: 124641048}
   m_Layer: 0
   m_Name: Notrufe_Zettel
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3363,8 +3364,23 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.810003, y: 35.079998, z: 0.20000005}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Size: {x: 24.810003, y: 35.079998, z: 2.8585103}
+  m_Center: {x: -0.000015386704, y: 0, z: 1.3292546}
+--- !u!114 &124641048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124641043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &126508043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6886,7 +6902,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1435551208}
+  m_TargetTexture: {fileID: 1830042405}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -13904,9 +13920,10 @@ GameObject:
   - component: {fileID: 522064994}
   - component: {fileID: 522064996}
   - component: {fileID: 522064995}
+  - component: {fileID: 522064997}
   m_Layer: 0
   m_Name: Notrufe_Zettel
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13991,8 +14008,23 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.810005, y: 35.079998, z: 0.20000005}
-  m_Center: {x: 0, y: 0.000030517578, z: 0.000015258789}
+  m_Size: {x: 24.810005, y: 35.079998, z: 1.3301967}
+  m_Center: {x: 1.9006632e-15, y: 0.000030913154, z: -0.7650833}
+--- !u!114 &522064997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522064992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &525543511
 GameObject:
   m_ObjectHideFlags: 0
@@ -27947,9 +27979,10 @@ GameObject:
   - component: {fileID: 798732058}
   - component: {fileID: 798732060}
   - component: {fileID: 798732059}
+  - component: {fileID: 798732061}
   m_Layer: 0
   m_Name: Notrufe_Zettel
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28022,7 +28055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1701b1c593db040bad17b4658beda3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAgent: {fileID: 0}
+  playerAgent: {fileID: 1213766852}
   fensterZumOeffnen: {fileID: 1138342676}
 --- !u!65 &798732060
 BoxCollider:
@@ -28036,6 +28069,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 24.809998, y: 35.079994, z: 0.19999999}
   m_Center: {x: 0.0000038146973, y: 0.00012207031, z: 0.0000035762787}
+--- !u!114 &798732061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798732056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &801957398
 GameObject:
   m_ObjectHideFlags: 0
@@ -40876,6 +40924,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1031647088}
   - component: {fileID: 1031647087}
+  - component: {fileID: 1031647091}
+  - component: {fileID: 1031647090}
+  - component: {fileID: 1031647089}
   m_Layer: 0
   m_Name: Notrufe_Zettel
   m_TagString: Interactive
@@ -40940,6 +40991,46 @@ Transform:
   m_Father: {fileID: 589118476}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031647089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1031647086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &1031647090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1031647086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1701b1c593db040bad17b4658beda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAgent: {fileID: 0}
+  fensterZumOeffnen: {fileID: 1138342676}
+--- !u!65 &1031647091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1031647086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 24.81, y: 35.079998, z: 0.2}
+  m_Center: {x: 0, y: -0.000061035156, z: 0}
 --- !u!1 &1032261989
 GameObject:
   m_ObjectHideFlags: 0
@@ -42341,8 +42432,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1435551208}
-  extraRenderTexture: {fileID: 1846053913}
+  renderTexture: {fileID: 1830042405}
+  extraRenderTexture: {fileID: 1873845128}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -52655,6 +52746,7 @@ GameObject:
   - component: {fileID: 1313008729}
   - component: {fileID: 1313008730}
   - component: {fileID: 1313008731}
+  - component: {fileID: 1313008732}
   m_Layer: 0
   m_Name: Evakuierungsplan
   m_TagString: Interactive
@@ -52744,6 +52836,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 19.2, y: 10.8, z: 1.9054569}
   m_Center: {x: -6.063399e-15, y: -0.0000012028765, z: -1.0527295}
+--- !u!114 &1313008732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1313008727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &1313513950
 GameObject:
   m_ObjectHideFlags: 0
@@ -53588,6 +53695,7 @@ GameObject:
   - component: {fileID: 1338561578}
   - component: {fileID: 1338561579}
   - component: {fileID: 1338561580}
+  - component: {fileID: 1338561581}
   m_Layer: 0
   m_Name: Notrufe_Zettel
   m_TagString: Interactive
@@ -53677,6 +53785,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 24.81, y: 35.08, z: 6.8317747}
   m_Center: {x: -8.156856e-15, y: 0, z: -3.5158887}
+--- !u!114 &1338561581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338561576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &1338908677
 GameObject:
   m_ObjectHideFlags: 0
@@ -56515,33 +56638,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433991081}
---- !u!84 &1435551208
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 816
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1450706874
 GameObject:
   m_ObjectHideFlags: 0
@@ -67088,6 +67184,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1829809628}
   m_Mesh: {fileID: 4300000, guid: 1c037d88a562bea47b97422130650ac3, type: 3}
+--- !u!84 &1830042405
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 816
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1834168692
 GameObject:
   m_ObjectHideFlags: 0
@@ -67447,33 +67570,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1842396062}
   m_Mesh: {fileID: 4300040, guid: a3f57a62ec206ff49a08d7b351400655, type: 3}
---- !u!84 &1846053913
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 816
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1853349278
 GameObject:
   m_ObjectHideFlags: 0
@@ -67815,6 +67911,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1872603287}
+--- !u!84 &1873845128
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 816
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1874610632
 GameObject:
   m_ObjectHideFlags: 0
@@ -70887,9 +71010,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1986184664}
   - component: {fileID: 1986184665}
+  - component: {fileID: 1986184668}
+  - component: {fileID: 1986184667}
+  - component: {fileID: 1986184666}
   m_Layer: 0
   m_Name: Notrufe_Zettel
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70902,7 +71028,7 @@ Transform:
   m_GameObject: {fileID: 1986184663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.271, y: 0.7599983, z: 0.23}
-  m_LocalScale: {x: 0.023747165, y: 0.023747165, z: 0.023747165}
+  m_LocalScale: {x: 0.01622956, y: 0.01622956, z: 0.01622956}
   m_Children: []
   m_Father: {fileID: 14223886}
   m_RootOrder: 13
@@ -70951,6 +71077,46 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!65 &1986184666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986184663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 24.81, y: 35.079998, z: 7.377637}
+  m_Center: {x: 0, y: -0.00024422773, z: -3.5888183}
+--- !u!114 &1986184667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986184663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1701b1c593db040bad17b4658beda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAgent: {fileID: 1213766852}
+  fensterZumOeffnen: {fileID: 1138342676}
+--- !u!114 &1986184668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986184663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &1987691144
 GameObject:
   m_ObjectHideFlags: 0
