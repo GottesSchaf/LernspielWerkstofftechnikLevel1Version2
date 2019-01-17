@@ -1,0 +1,62 @@
+4.Wert_Verwendet~
+wahr
+|
+5.Wert_Verwendet~
+wahr
+|
+BB1_Zieltemperatur~
+Element : 1200
+Element : 1300
+Element : 1300
+Element : 0
+Element : 0
+|
+BB2_Zieltemperatur~
+Element : 1000
+Element : 1500
+Element : 1550
+Element : 0
+Element : 0
+|
+BB3_Zieltemperatur~
+Element : 400
+Element : 400
+Element : 1300
+Element : 0
+Element : 0
+|
+BB4_Zieltemperatur~
+Element : 1000
+Element : 1100
+Element : 1550
+Element : 0
+Element : 0
+|
+BB1_Zeit~
+Element : 30
+Element : 15
+Element : 5
+Element : 0
+Element : 0
+|
+BB2_Zeit~
+Element : 30
+Element : 15
+Element : 10
+Element : 0
+Element : 0
+|
+BB3_Zeit~
+Element : 30
+Element : 15
+Element : 10
+Element : 0
+Element : 0
+|
+BB4_Zeit~
+Element : 30
+Element : 15
+Element : 10
+Element : 0
+Element : 0
+
