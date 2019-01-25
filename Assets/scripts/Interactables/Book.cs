@@ -22,7 +22,6 @@ public class Book : Interactive
     public override void Interact()
     {
         Debug.Log("You opend the URL.");
-        //Application.OpenURL(URL);
-        Application.ExternalEval("window.open('" + URL + "', 'Buch');");
+        Application.OpenURL(URL);
     }
 }
