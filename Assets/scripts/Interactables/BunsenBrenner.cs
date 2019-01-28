@@ -280,7 +280,22 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         windowGraph.DeleteGraph();
                         tiegel1Heated = false;
-
+                        for(int i = 0; i < tiegel1Graph.Length; i++)
+                        {
+                            tiegel1Graph[i] = false;
+                        }
+                        for (int i = 0; i < tiegel2Graph.Length; i++)
+                        {
+                            tiegel2Graph[i] = false;
+                        }
+                        for (int i = 0; i < tiegel3Graph.Length; i++)
+                        {
+                            tiegel3Graph[i] = false;
+                        }
+                        for (int i = 0; i < tiegel4Graph.Length; i++)
+                        {
+                            tiegel4Graph[i] = false;
+                        }
                     }
                     if (istTemp[0] < BB1_Zieltemp[0])
                     {
