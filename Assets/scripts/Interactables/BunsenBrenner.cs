@@ -267,8 +267,8 @@ public class BunsenBrenner : MonoBehaviour
             //    modifier = 1.0f;
             //}
             #region Bunsen Brenner Abfrage
-            //20% Si / 80%Ge || Wenn der Tiegel auf einem Bunsen Brenner liegt und die jeweilige Flamme an ist, erhitze den Tiegel
-            #region 20% / 80%
+            //100% Cu / 0% Al || Wenn der Tiegel auf einem Bunsen Brenner liegt und die jeweilige Flamme an ist, erhitze den Tiegel
+            #region 100% Cu / 0% Al
             if (slot1.transform.childCount > 0 || slot2.transform.childCount > 0 || slot3.transform.childCount > 0 || slot4.transform.childCount > 0)
             {
                 #region aufheizen
@@ -280,23 +280,12 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         windowGraph.DeleteGraph();
                         tiegel1Heated = false;
-                        for(int i = 0; i < tiegel1Graph.Length; i++)
+                        for (int i = 0; i < tiegel1Graph.Length; i++)
                         {
                             tiegel1Graph[i] = false;
                         }
-                        for (int i = 0; i < tiegel2Graph.Length; i++)
-                        {
-                            tiegel2Graph[i] = false;
-                        }
-                        for (int i = 0; i < tiegel3Graph.Length; i++)
-                        {
-                            tiegel3Graph[i] = false;
-                        }
-                        for (int i = 0; i < tiegel4Graph.Length; i++)
-                        {
-                            tiegel4Graph[i] = false;
-                        }
                     }
+
                     if (istTemp[0] < BB1_Zieltemp[0])
                     {
                         istTemp[0] += BB1_Zieltemp[0] / BB1_Zeit[0];
@@ -713,8 +702,8 @@ public class BunsenBrenner : MonoBehaviour
                     }
                 }
                 #endregion
-                //40% Si / 60% Ge
-                #region 40% / 60%
+                //90% Cu / 10% Al
+                #region 90% Cu / 10% Al
                 #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("40SiCold") || slot1.transform.GetChild(0).CompareTag("40SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("40SiCold") || slot2.transform.GetChild(0).CompareTag("40SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("40SiCold") || slot3.transform.GetChild(0).CompareTag("40SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("40SiCold") || slot4.transform.GetChild(0).CompareTag("40SiHot")))
                 {
@@ -722,6 +711,10 @@ public class BunsenBrenner : MonoBehaviour
                     if (tiegel2Heated)
                     {
                         windowGraphTiegel2.DeleteGraph();
+                        for (int i = 0; i < tiegel2Graph.Length; i++)
+                        {
+                            tiegel2Graph[i] = false;
+                        }
                         tiegel2Heated = false;
                     }
                     if (istTemp[1] <= BB2_Zieltemp[0])
@@ -1139,8 +1132,8 @@ public class BunsenBrenner : MonoBehaviour
                     }
                 }
                 #endregion
-                //60% Si / 40% Ge
-                #region 60% / 40%
+                //70% Cu / 30% Al
+                #region 70% Cu / 30% Al
                 #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("60SiCold") || slot1.transform.GetChild(0).CompareTag("60SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("60SiCold") || slot2.transform.GetChild(0).CompareTag("60SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("60SiCold") || slot3.transform.GetChild(0).CompareTag("60SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("60SiCold") || slot4.transform.GetChild(0).CompareTag("60SiHot")))
                 {
@@ -1149,6 +1142,10 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         windowGraphTiegel3.DeleteGraph();
                         tiegel3Heated = false;
+                        for (int i = 0; i < tiegel3Graph.Length; i++)
+                        {
+                            tiegel3Graph[i] = false;
+                        }
                     }
                     if (istTemp[2] <= BB3_Zieltemp[0])
                     {
@@ -1565,8 +1562,8 @@ public class BunsenBrenner : MonoBehaviour
                     }
                 }
                 #endregion
-                //80% Si / 20% Ge
-                #region 80% / 20%
+                //40% Cu / 60% Al
+                #region 40% Cu / 60% Al
                 #region aufheizen
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("80SiCold") || slot1.transform.GetChild(0).CompareTag("80SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("80SiCold") || slot2.transform.GetChild(0).CompareTag("80SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("80SiCold") || slot3.transform.GetChild(0).CompareTag("80SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("80SiCold") || slot4.transform.GetChild(0).CompareTag("80SiHot")))
                 {
@@ -1575,6 +1572,10 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         windowGraphTiegel4.DeleteGraph();
                         tiegel4Heated = false;
+                        for (int i = 0; i < tiegel4Graph.Length; i++)
+                        {
+                            tiegel4Graph[i] = false;
+                        }
                     }
                     if (istTemp[3] <= BB4_Zieltemp[0])
                     {
@@ -1742,7 +1743,7 @@ public class BunsenBrenner : MonoBehaviour
                                 slot3.transform.GetChild(0).tag = "80SiCold";
                                 tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
                                 slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
                             else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("80SiHot"))
                             {
@@ -1993,7 +1994,7 @@ public class BunsenBrenner : MonoBehaviour
                 #endregion
                 #endregion
                 //Sobald alle Tiegel die Zieltemp. erreicht haben, dann beende diese Schleife
-                if (istTemp[0] >= 1550 && istTemp[1] >= 1550 && istTemp[2] >= 1550 && istTemp[3] >= 1550)
+                if (istTemp[0] >= 1500 && istTemp[1] >= 1500 && istTemp[2] >= 1500 && istTemp[3] >= 1500)
                 {
                     waiting = false;
                     break;

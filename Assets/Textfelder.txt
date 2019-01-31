@@ -1,5 +1,5 @@
 Datenblatt_Text~
-Zahnrad: CuAl40-C
+Zahnrad: CuAl10Fe3Mn2
 
 Pleuel:  AlMgSi4 
 
@@ -40,19 +40,19 @@ Kolben:  CuAl9
 
 1_Punkt_X_Achse~
 
-50
+20
 
 |
 
 2_Punkt_X_Achse~
 
-100
+40
 
 |
 
 3_Punkt_X_Achse~
 
-150
+60
 
 |
 
@@ -67,26 +67,26 @@ zu welchem Tiegel gehört. Vielleicht finde ich mehr Informationen in der Bibliot
 
 Legie_1~
 
-20% Al
-80% Cu
+100% Cu 
+0% Al
 
 |
 
 Legie_2~
 
-40% Al
-60% Cu
+90% Cu 
+10% Al
 
 |
 
 Legie_3~
 
-60% Al
-40% Cu
+70% Cu 
+30% Al
 
 |
 
 Legie_4~
 
-80% Al
-20% Cu
+40% Cu 
+60% Al

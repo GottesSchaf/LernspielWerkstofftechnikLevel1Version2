@@ -41,44 +41,12 @@ public class Window_Graph_Tiegel3 : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
-        //if (changedPos == false)
-        //{
-        //    if (BBSlot[0].transform.GetChild(0).CompareTag("60SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -101);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[1].transform.GetChild(0).CompareTag("60SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -231);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[2].transform.GetChild(0).CompareTag("60SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -387);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[3].transform.GetChild(0).CompareTag("60SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -541);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -101);
-        //        PanelTiegel.layer = 1;
-        //        Debug.Log("Konnte kein Tiegel finden mit dem Tag '60SiCold'");
-        //    }
-        //    changedPos = true;
-        //}
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
-        float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
+        float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen auf Y
         float yMaximum = 2000; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
-        //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
-        //Vorher: if(i < valueList.Count)
-        float xPosition = i * xSize;
+        float xPosition = i * xSize * 1.875f;
         float yPosition = (value / yMaximum) * graphHeight;
         float yPos = (float)yPosition;
         GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));

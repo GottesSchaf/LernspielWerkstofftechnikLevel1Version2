@@ -46,9 +46,7 @@ public class Window_Graph_Tiegel2 : MonoBehaviour {
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
         float yMaximum = 2000; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
-        //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
-        //Vorher: if(i < valueList.Count)
-        float xPosition = i * xSize;
+        float xPosition = i * xSize * 1.875f;
         float yPosition = (value / yMaximum) * graphHeight;
         float yPos = (float)yPosition;
         GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));
