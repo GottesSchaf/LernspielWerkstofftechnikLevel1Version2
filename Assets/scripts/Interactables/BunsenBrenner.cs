@@ -41,7 +41,7 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] Window_Graph_Tiegel2 windowGraphTiegel2; //Der Graph zur Anzeige der Abkühlkurve des 40er Tiegels
     [SerializeField] Window_Graph_Tiegel3 windowGraphTiegel3; //Der Graph zur Anzeige der Abkühlkurve des 60er Tiegels
     [SerializeField] Window_Graph_Tiegel4 windowGraphTiegel4; //Der Graph zur Anzeige der Abkühlkurve des 80er Tiegels
-    [SerializeField] GameObject[] tiegelAufBB; //Zum Abändern des Materials eines Tiegels, falls dieser erhitzt wurde
+    [SerializeField] GameObject[] tiegelAufBB, zahnradAufBB, wrenchAufBB, pleuelAufBB; //Zum Abändern des Materials eines Tiegels, falls dieser erhitzt wurde
     int tiegelFarbe, tiegel2Farbe, tiegel3Farbe, tiegel4Farbe; //Wert für die Farbe der Graphen (Farbwert selbst wird im Graphen selbst eingestellt, nicht über diese Zahl)
     [SerializeField] ParticleSystem[] BunsenBrennerFlammen; //Zum Anzeigen des Partikelsystems der Flammen
     bool tiegel1Heated, tiegel2Heated, tiegel3Heated, tiegel4Heated; //Absicherung, dass die Tiegel aufgeheizt sind
@@ -104,7 +104,7 @@ public class BunsenBrenner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region Tiegel auf Bunsenbrenner
+        #region Objekte auf Bunsenbrenner
         //Falls ein Tiegel auf einen Bunsen Brenner in der 2D Ansicht gelegt wird, zeige diesen auch in 3D
         if (slot1.transform.childCount > 0)
         {
@@ -138,6 +138,108 @@ public class BunsenBrenner : MonoBehaviour
         {
             tiegelAufBB[3].SetActive(false);
         }
+        #region Zahnrad
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[0].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[1].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[2].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[3].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[3].SetActive(false);
+        }
+        #endregion
+        #region Pleuel
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[0].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[1].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[2].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[3].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[3].SetActive(false);
+        }
+        #endregion
+        #region Wrench
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[0].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[1].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[2].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[3].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[3].SetActive(false);
+        }
+        #endregion
         #endregion
         //CheckInstance();
         //Wenn das Hauptgas und das Platzgas eingeschalten ist, dann rufe die Bunsen Brenner Rechnung auf
@@ -157,46 +259,6 @@ public class BunsenBrenner : MonoBehaviour
             flamme3.SetActive(false);
             BunsenBrennerFlammen[2].gameObject.SetActive(false);
             flamme4.SetActive(false);
-            BunsenBrennerFlammen[3].gameObject.SetActive(false);
-        }
-        //Falls man die Flamme anmachen möchte, ohne das ein Tiegel auf dem Bunsen Brenner liegt, dann zeige den Verbrannt Hinweis. Anschließend kann bis zur Verarztung nicht weiter getan werden
-        if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false)
-        {
-            zeigeVerbrennung = true;
-            verbranntFenster.SetActive(true);
-            verbrannt = true;
-            flamme1.SetActive(false);
-            flamme1Bool = false;
-            BunsenBrennerFlammen[0].gameObject.SetActive(false);
-        }
-        //Gleiches für den zweiten Bunsen Brenner
-        else if (flamme2.activeInHierarchy == true && slot2.transform.childCount == 0 && zeigeVerbrennung == false)
-        {
-            zeigeVerbrennung = true;
-            verbranntFenster.SetActive(true);
-            verbrannt = true;
-            flamme2.SetActive(false);
-            flamme2Bool = false;
-            BunsenBrennerFlammen[1].gameObject.SetActive(false);
-        }
-        //Gleiches für den dritten Bunsen Brenner
-        else if (flamme3.activeInHierarchy == true && slot3.transform.childCount == 0 && zeigeVerbrennung == false)
-        {
-            zeigeVerbrennung = true;
-            verbranntFenster.SetActive(true);
-            verbrannt = true;
-            flamme3.SetActive(false);
-            flamme3Bool = false;
-            BunsenBrennerFlammen[2].gameObject.SetActive(false);
-        }
-        //Gleiches für den vierten Bunsen Brenner
-        else if (flamme4.activeInHierarchy == true && slot4.transform.childCount == 0 && zeigeVerbrennung == false)
-        {
-            zeigeVerbrennung = true;
-            verbranntFenster.SetActive(true);
-            verbrannt = true;
-            flamme4.SetActive(false);
-            flamme4Bool = false;
             BunsenBrennerFlammen[3].gameObject.SetActive(false);
         }
     }
@@ -2016,7 +2078,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             erstVerarztenFenster.SetActive(true);
         }
-        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0)
+        if (flamme1.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0)
         {
             if (slot1.transform.GetChild(0).CompareTag("Falsch") == false)
             {
@@ -2037,8 +2099,11 @@ public class BunsenBrenner : MonoBehaviour
                 hinweisToolSchmelzen.SetActive(true);
             }
         }
-        else
+        else if(zeigeVerbrennung == false && verbrannt == false)
         {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme1.SetActive(false);
             flamme1Bool = false;
             BunsenBrennerFlammen[0].gameObject.SetActive(false);
@@ -2076,8 +2141,11 @@ public class BunsenBrenner : MonoBehaviour
                 hinweisToolSchmelzen.SetActive(true);
             }
         }
-        else
+        else if(zeigeVerbrennung == false && verbrannt == false)
         {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme2.SetActive(false);
             flamme2Bool = false;
             BunsenBrennerFlammen[1].gameObject.SetActive(false);
@@ -2115,8 +2183,11 @@ public class BunsenBrenner : MonoBehaviour
                 hinweisToolSchmelzen.SetActive(true);
             }
         }
-        else
+        else if(zeigeVerbrennung == false && verbrannt == false)
         {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme3.SetActive(false);
             flamme3Bool = false;
             BunsenBrennerFlammen[2].gameObject.SetActive(false);
@@ -2154,11 +2225,18 @@ public class BunsenBrenner : MonoBehaviour
                 hinweisToolSchmelzen.SetActive(true);
             }
         }
-        else
+        else if(zeigeVerbrennung == false && verbrannt == false)
         {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme4.SetActive(false);
             flamme4Bool = false;
             BunsenBrennerFlammen[3].gameObject.SetActive(false);
+        }
+        else
+        {
+            
         }
     }
     #endregion
