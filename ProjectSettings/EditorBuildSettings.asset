@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Assets/scenes/level1/Hauptmen\xFC.unity"
+    guid: 4bc72b23613534343bf5160203b2afdc
+  - enabled: 1
     path: Assets/scenes/level1/level1.unity
     guid: d88a38d9df660f446942b83ebe1dfb56
