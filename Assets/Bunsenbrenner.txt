@@ -12,8 +12,8 @@ Element : 1500
 Element : 0
 |
 BB2_Zieltemperatur~
-Element : 805
-Element : 805
+Element : 580
+Element : 580
 Element : 1150
 Element : 1500
 Element : 0
@@ -33,30 +33,30 @@ Element : 1500
 Element : 0
 |
 BB1_Zeit~
-Element : 24
+Element : 25
 Element : 5
 Element : 32
-Element : 13
+Element : 12
 Element : 0
 |
 BB2_Zeit~
-Element : 19
+Element : 18
 Element : 8
-Element : 23
-Element : 14
+Element : 15
+Element : 20
 Element : 0
 |
 BB3_Zeit~
 Element : 15
 Element : 5
-Element : 12
-Element : 28
+Element : 11
+Element : 27
 Element : 0
 |
 BB4_Zeit~
 Element : 13
 Element : 7
-Element : 15
-Element : 23
+Element : 13
+Element : 37
 Element : 0
 
