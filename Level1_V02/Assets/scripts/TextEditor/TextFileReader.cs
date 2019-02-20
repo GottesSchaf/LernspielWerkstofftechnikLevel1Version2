@@ -44,6 +44,8 @@ public class TextFileReader : MonoBehaviour
     private List<Book> books;
     #endregion
 
+    public string[] lines;
+
     #region Methods
 
     private void Awake()
@@ -128,7 +130,7 @@ public class TextFileReader : MonoBehaviour
 
     public void ReadTextFileBB(string path)
     {
-        if(levelMode == Level.Game)
+        if (levelMode == Level.Game)
         {
             string rawText = Regex.Replace(File.ReadAllText(@path, System.Text.Encoding.Default), @"\t|\n|\r", "");
 
@@ -254,9 +256,9 @@ public class TextFileReader : MonoBehaviour
                         break;
                 }
             }
-               
+
         }
-        else if(levelMode == Level.Menu)
+        else if (levelMode == Level.Menu)
         {
 
         }
