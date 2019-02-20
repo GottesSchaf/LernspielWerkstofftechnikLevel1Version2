@@ -44,7 +44,6 @@ public class TextFileReader : MonoBehaviour
     private List<Book> books;
     #endregion
 
-    public string[] lines;
 
     #region Methods
 
@@ -82,7 +81,7 @@ public class TextFileReader : MonoBehaviour
                 {
                     if (x.name == splitText[0].Trim())
                     {
-                        x.GetComponent<Text>().text = Regex.Replace(splitText[1], @"\t|\n|\r", "");
+                        x.GetComponent<Text>().text = Regex.Replace(splitText[1], Environment.NewLine, "");
                         break;
                     }
                 }
@@ -96,7 +95,7 @@ public class TextFileReader : MonoBehaviour
                     }
                     else if (splitText[0].Contains("BuchLink") && i < books.Count)
                     {
-                        books[i].URL = Regex.Replace(splitText[1], @"\t|\n|\r", "");
+                        books[i].URL = Regex.Replace(splitText[1], Environment.NewLine, "");
                         i++;
                         break;
                     }
@@ -120,7 +119,7 @@ public class TextFileReader : MonoBehaviour
                 {
                     if (x.name == splitText[0].Trim())
                     {
-                        x.GetComponent<Text>().text = Regex.Replace(splitText[1], @"\t|\n|\r", "");
+                        x.GetComponent<Text>().text = Regex.Replace(splitText[1], Environment.NewLine, "");
                         break;
                     }
                 }
@@ -130,9 +129,9 @@ public class TextFileReader : MonoBehaviour
 
     public void ReadTextFileBB(string path)
     {
-        if (levelMode == Level.Game)
+        if(levelMode == Level.Game)
         {
-            string rawText = Regex.Replace(File.ReadAllText(@path, System.Text.Encoding.Default), @"\t|\n|\r", "");
+            string rawText = Regex.Replace(File.ReadAllText(@path, System.Text.Encoding.Default), Environment.NewLine, "");
 
             byte[] decbuff = Convert.FromBase64String(rawText);
             rawText = Encoding.UTF8.GetString(decbuff);
@@ -142,11 +141,12 @@ public class TextFileReader : MonoBehaviour
             foreach (string s in textFileRegions)
             {
                 string[] splitText = s.Split('~');
-                switch (splitText[0])
+
+                switch (splitText[0].Replace(Environment.NewLine, ""))
                 {
                     case "4.Wert_Verwendet":
-                        if (Regex.Replace(splitText[1], @"\t|\n|\r", "").ToLower() == "wahr")
-                        {
+                        if (Regex.Replace(splitText[1], Environment.NewLine, "").ToLower() == "wahr")
+                        {                         
                             bb.graphPunkt4 = true;
                         }
                         else
@@ -155,7 +155,7 @@ public class TextFileReader : MonoBehaviour
                         }
                         break;
                     case "5.Wert_Verwendet":
-                        if (Regex.Replace(splitText[1], @"\t|\n|\r", "").ToLower() == "wahr")
+                        if (Regex.Replace(splitText[1], Environment.NewLine, "").ToLower() == "wahr")
                         {
                             bb.graphPunkt5 = true;
                         }
@@ -171,7 +171,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (z > 0)
                             {
-                                bb.BB1_Zieltemp[z - 1] = (float)Convert.ToDouble(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB1_Zieltemp[z - 1] = (float)Convert.ToDouble(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             z++;
                         }
@@ -182,7 +182,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (zz > 0)
                             {
-                                bb.BB2_Zieltemp[zz - 1] = (float)Convert.ToDouble(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB2_Zieltemp[zz - 1] = (float)Convert.ToDouble(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             zz++;
                         }
@@ -193,7 +193,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (zzz > 0)
                             {
-                                bb.BB3_Zieltemp[zzz - 1] = (float)Convert.ToDouble(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB3_Zieltemp[zzz - 1] = (float)Convert.ToDouble(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             zzz++;
                         }
@@ -204,7 +204,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (zzzz > 0)
                             {
-                                bb.BB4_Zieltemp[zzzz - 1] = (float)Convert.ToDouble(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB4_Zieltemp[zzzz - 1] = (float)Convert.ToDouble(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             zzzz++;
                         }
@@ -216,7 +216,7 @@ public class TextFileReader : MonoBehaviour
 
                             if (o > 0)
                             {
-                                bb.BB1_Zeit[o - 1] = Convert.ToInt32(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB1_Zeit[o - 1] = Convert.ToInt32(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             o++;
                         }
@@ -227,7 +227,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (oo > 0)
                             {
-                                bb.BB2_Zeit[oo - 1] = Convert.ToInt32(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB2_Zeit[oo - 1] = Convert.ToInt32(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             oo++;
                         }
@@ -238,7 +238,7 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (ooo > 0)
                             {
-                                bb.BB3_Zeit[ooo - 1] = Convert.ToInt32(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB3_Zeit[ooo - 1] = Convert.ToInt32(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             ooo++;
                         }
@@ -249,16 +249,16 @@ public class TextFileReader : MonoBehaviour
                         {
                             if (oooo > 0)
                             {
-                                bb.BB4_Zeit[oooo - 1] = Convert.ToInt32(Regex.Replace(x, @"\t|\n|\r| ", ""));
+                                bb.BB4_Zeit[oooo - 1] = Convert.ToInt32(Regex.Replace(x, Environment.NewLine, ""));
                             }
                             oooo++;
                         }
                         break;
                 }
             }
-
+               
         }
-        else if (levelMode == Level.Menu)
+        else if(levelMode == Level.Menu)
         {
 
         }
