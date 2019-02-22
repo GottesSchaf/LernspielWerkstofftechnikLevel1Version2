@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: TU
+  productName: TU Berlin ViaMaterialia
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.63529414, g: 0.82745105, b: 0.8078432, a: 1}
@@ -239,7 +239,7 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 2800000, guid: 7991049b78ee45b4f8c8d2488ea1650d,
+  resolutionDialogBanner: {fileID: 2800000, guid: 5d55ec3f85f49ff4fb99307615e3a2e2,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
