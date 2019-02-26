@@ -451,6 +451,12 @@ public class BunsenBrenner : MonoBehaviour
                         tiegelFarbe = 20;
                         tiegel1Heated = true;
                     }
+                    else if (istTemp[0] < BB1_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
+                    {
+                        istTemp[0] += (BB1_Zieltemp[3] - BB1_Zieltemp[2]) / BB1_Zeit[3];
+                        tiegelFarbe = 20;
+                        tiegel1Heated = true;
+                    }
                     //4ter Punkt im Graphen
                     else if (istTemp[0] >= BB1_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == false)
                     {
@@ -877,6 +883,12 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[1] = BB2_Zieltemp[2];
                     }
                     else if (istTemp[1] < BB2_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == false)
+                    {
+                        istTemp[1] += (BB2_Zieltemp[3] - BB2_Zieltemp[2]) / BB2_Zeit[3];
+                        tiegelFarbe = 20;
+                        tiegel2Heated = true;
+                    }
+                    else if (istTemp[1] < BB2_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
                     {
                         istTemp[1] += (BB2_Zieltemp[3] - BB2_Zieltemp[2]) / BB2_Zeit[3];
                         tiegelFarbe = 20;
@@ -1312,6 +1324,12 @@ public class BunsenBrenner : MonoBehaviour
                         tiegelFarbe = 20;
                         tiegel3Heated = true;
                     }
+                    else if (istTemp[2] < BB3_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
+                    {
+                        istTemp[2] += (BB3_Zieltemp[3] - BB3_Zieltemp[2]) / BB3_Zeit[3];
+                        tiegelFarbe = 20;
+                        tiegel3Heated = true;
+                    }
                     //4ter Punkt im Graphen
                     else if (istTemp[2] >= BB3_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == false)
                     {
@@ -1739,6 +1757,12 @@ public class BunsenBrenner : MonoBehaviour
                         istTemp[3] = BB4_Zieltemp[2];
                     }
                     else if (istTemp[3] < BB4_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == false)
+                    {
+                        istTemp[3] += (BB4_Zieltemp[3] - BB4_Zieltemp[2]) / BB4_Zeit[3];
+                        tiegelFarbe = 20;
+                        tiegel4Heated = true;
+                    }
+                    else if (istTemp[3] < BB4_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
                     {
                         istTemp[3] += (BB4_Zieltemp[3] - BB4_Zieltemp[2]) / BB4_Zeit[3];
                         tiegelFarbe = 20;
