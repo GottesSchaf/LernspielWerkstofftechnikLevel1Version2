@@ -1396,6 +1396,7 @@ public class BunsenBrenner : MonoBehaviour
                 #endregion
                 else
                 {
+                    Debug.Log("Kühle BB3 ab");
                     tiegelLocked60 = false;
                     if (istTemp[2] > 25 && istTemp[2] <= BB3_Zieltemp[0])
                     {
@@ -1571,6 +1572,7 @@ public class BunsenBrenner : MonoBehaviour
                     //4ter Graph Punkt
                     else if (istTemp[2] > BB3_Zieltemp[2] && graphPunkt4 == true && graphPunkt5 == false)
                     {
+                        Debug.Log("4ter Punkt BB3");
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("60SiHot") || slot1.transform.GetChild(0).CompareTag("60SiCold")))
                         {
                             tiegel3Farbe = 20;
@@ -1600,7 +1602,7 @@ public class BunsenBrenner : MonoBehaviour
                             tiegel3Graph[2] = true;
                         }
                         //------------------------------------------------
-                        istTemp[2] -= (BB3_Zieltemp[2] - BB3_Zieltemp[1]) / BB3_Zeit[2];
+                        istTemp[2] -= (BB3_Zieltemp[3] - BB3_Zieltemp[2]) / BB3_Zeit[3];
                     }
                     else if (istTemp[2] > BB3_Zieltemp[2] && istTemp[2] <= BB3_Zieltemp[3] && graphPunkt4 == true && graphPunkt5 == true)
                     {
