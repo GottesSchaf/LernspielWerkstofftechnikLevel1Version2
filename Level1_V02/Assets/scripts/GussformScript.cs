@@ -55,6 +55,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -98,6 +102,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
@@ -147,6 +155,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -190,6 +202,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
@@ -241,6 +257,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -283,6 +303,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
@@ -331,6 +355,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -373,6 +401,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
@@ -423,6 +455,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -465,6 +501,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
@@ -513,6 +553,10 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
             //4ter Graph Punkt
             else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
             {
@@ -555,6 +599,10 @@ public class GussformScript : MonoBehaviour {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
             else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
             {
                 bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
